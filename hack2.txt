@@ -1,0 +1,41 @@
+xor questions basic--available on the gfg page
+-
+1.swap numbers using xor
+----
+int main()
+{
+    int x = 10, y = 5;
+    // Code to swap 'x' (1010) and 'y' (0101)
+    x = x ^ y; // x now becomes 15 (1111)
+    y = x ^ y; // y becomes 10 (1010)
+    x = x ^ y; // x becomes 5 (0101)
+    cout << "After Swapping: x =" << x << ", y=" << y;
+    return 0;
+}
+-------
+2.Find the Missing Number//easily done as we have the number whose frequency is 1 and other have a even count//
+-----------
+3.add numbers using bit operations
+// Online C++ compiler to run C++ program online
+--------
+#include <iostream>
+using namespace std;
+int main() {
+    int a=2;
+    int b=4;
+    int c=a|b +(a&b);
+    cout<<c;
+      
+}
+----------------------------
+3.finding if the numbers given are of oppositive signs 
+the xor of the two numbers would be -ve if the two number have an opposite sign
+-------------------------------------
+4.Binary Number with Alternating Bits
+if n has an alternate pattern then n^(n>>1)wil produce a number having all bits set.
+-------------------------------------------------
+
+-Simple approach to flip the bits of a number
+
+
+
