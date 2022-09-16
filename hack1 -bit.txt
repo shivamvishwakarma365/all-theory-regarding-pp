@@ -1,0 +1,55 @@
+brian algorithm for bit manipulation
+-------------------------------------
+it makes the right most set bit unset
+this algorithm is used to count the number of set bits in a binary number
+by--
+
+int count=0;
+while(n){//this meaning the loop will only run if the number is not zero
+n=n&(n-1)
+count++;
+}
+return count;
+
+//a simple method to count the setbits would be--
+
+int n;
+while(n){
+if(n&1==1){
+count++;}
+n>>1;//this makes the right shift
+}
+
+this also helps in finding the power of two check
+
+2^x
+it wouold be power of the number operation n&(n-1)is not equal to zero//
+like 4 is 100 and 3 is 011 and the and operation answer would be 000 this means it is power of 2.
+
+
+to find the missing number in an array of number from 0-n it rather be sorted or not it does not depend
+int ans=0;
+we do xor with all the elements in the array 
+then return the ans by updating it with ans =ans^arraykasize;
+////
+how to seperate a two elements from a xor product--if the product is manlo 1011,
+it has the last bit as a set bit ,so the two number has to be 1 and 0 as their last right bit(as xor of 1 and 0 is 1)
+
+1.how to find the right most set bit--(n&~(n-1))
+~to makes the setbits opposite
+~ negation
+this above will come helpful in finding 2 unique numbers in an array of duplicates
+//
+how to check if a numbers has all set bits or not example----n&(n+1) will gives=0;
+----------------------------------------------------------------------------------
+to check if a number has alternating 0 and 1 as bit (n^(n>>1)-it will give a result with all bits as set if the number has alternating sets(0,1)
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
