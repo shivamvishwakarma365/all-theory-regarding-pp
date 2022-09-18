@@ -33,6 +33,7 @@ the xor of the two numbers would be -ve if the two number have an opposite sign
 -------------------------------------
 4.Binary Number with Alternating Bits
 if n has an alternate pattern then n^(n>>1)wil produce a number having all bits set.
+and to check if all bits are set or not one can do n&(n+1)
 -------------------------------------------------
 
 -Simple approach to flip the bits of a number
