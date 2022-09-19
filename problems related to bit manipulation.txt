@@ -1,0 +1,230 @@
+interview bit and gfg bit manipulation questions-
+-------------------------------------
+different bits pair sum-
+#define mod 1000000007
+int Solution::cntBits(vector<int> &A) {
+   
+    long long int n=A.size();
+    long long int ans=0;
+    long long int count =0;
+    for(int i=0;i<31;i++){
+        count=0;
+        for(int j=0;j<A.size();j++){
+            if(A[j]& 1<<i){
+                count++;
+            }
+        }
+        ans += (count * (n - count) * 2);
+       
+    }
+    ans=ans%mod;
+    ans=(int)ans;
+    return ans%mod;
+    
+}
+--------------------------
+NUMBER OF 1 BITS-(ONE CAN REFER TO THE HACK)-
+int Solution::numSetBits(unsigned int n) {
+    int count=0;
+    while(n){
+        n=n&(n-1);
+        count++;
+    }
+    return count;
+}
+---------------------------------------
+Single number -xor concept
+int Solution::singleNumber(const vector<int> &A) {
+    int ans=0;
+    for(int i:A){
+        ans^=i;
+    }
+    return ans;
+}
+-------------------------------------------
+divide integers-(it is a bit messy needs a revisit)
+public:
+    long long divide(long long dividend, long long divisor) 
+    {
+          //code here
+        int sign=(dividend<0)^(divisor<0)?-1:1;
+        dividend=abs(dividend);
+        divisor=abs(divisor);
+        long long int quotient=0, temp=0;
+        
+        for(int i=31;i>=0;i--)
+        {
+            if(temp+(divisor<<i)<=dividend)
+            {
+                temp=temp+(divisor<<i);
+                quotient+=1LL<<i;   
+            }
+        }
+        if(sign==-1)
+            quotient=-quotient;
+        return quotient;
+    }
+-------------------------------------------------
+single number II
+-
+int Solution::singleNumber(const vector<int> &A) {
+   
+    int ans=0;
+    for(int i=0;i<32;i++){
+        int setodd=0;
+        for(int j=0;j<A.size();j++){
+            if((1<<i)&A[j]){
+                setodd++;
+            }
+        }
+        if(setodd%3){
+            ans=ans|(1<<i);
+        }
+    }
+    return ans;
+}
+//some random questions 1.if its a power of 2 or not 3.if a number is even or odd
+----
+
+sum of pairwise hamming distance-
+--
+int Solution::hammingDistance(const vector<int> &A) {
+   
+    long long ans=0;
+    int n=A.size();
+    for(int i=0;i<32;i++){
+         long long countzero=0;
+         long long countone=0;
+        for(int j=0;j<n;j++){
+             
+            if((1<<i)&A[j]){
+                countone++;
+            }else{
+                countzero++;
+            }
+          
+        }
+        ans+=(countone*countzero*2)%1000000007;
+        
+    }
+    return ans%1000000007;
+}
+--------------------------------------------
+=---------------------
+bit flipping -
+int onesComplement( int n)
+{
+    vector<int> v;
+    // convert to binary representation
+    while (n != 0) {
+        v.push_back(n % 2);
+        n = n / 2;
+    }
+    reverse(v.begin(), v.end());
+    // change 1's to 0 and 0's to 1
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] == 0)
+            v[i] = 1;
+        else
+            v[i] = 0;
+    }
+    // convert back to number representation
+    int two = 1;
+    for (int i = v.size() - 1; i >= 0; i--) {
+        n = n + v[i] * two;
+        two = two * 2;
+    }
+    return n;
+}
+
+int Solution::solve(int A) {
+    return onesComplement(A);
+}
+-----------------------------
+hamming distance-leetcode
+-
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int res = 0;
+        int num = x^y;
+        while (num) {
+            res += num % 2;
+            num=num>>1;;
+        }
+        return res;
+    }
+};
+------------------
+maximum length of a word with no reapting characters dict leetcode
+--
+class Solution {
+public:
+    int maxProduct(vector<string>& words) {
+        vector<int>arr(words.size());
+        int ans=0;
+        for(int i=0;i<words.size();i++){
+            for(char c:words[i]){
+                arr[i]|=1<<(c-'a');
+            }
+            for(int j=0;j<i;j++){
+                if(!(arr[i]&arr[j])){
+                    if(words[i].size()*words[j].size()>ans){
+                        ans=words[i].size()*words[j].size();
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+-------------------------------------------------
+total set bits
+-
+// A simple program to count set bits
+// in all numbers from 1 to n.
+#include <iostream>
+using namespace std;
+
+// A utility function to count set bits
+// in a number x
+unsigned int countSetBitsUtil(unsigned int x);
+
+// Returns count of set bits present in all
+// numbers from 1 to n
+unsigned int countSetBits(unsigned int n)
+{
+	int bitCount = 0; // initialize the result
+
+	for (int i = 1; i <= n; i++)
+		bitCount += countSetBitsUtil(i);
+
+	return bitCount;
+}
+
+// A utility function to count set bits
+// in a number x
+unsigned int countSetBitsUtil(unsigned int x)
+{
+	if (x <= 0)
+		return 0;
+	return (x % 2 == 0 ? 0 : 1) + countSetBitsUtil(x / 2);
+}
+
+// Driver program to test above functions
+int main()
+{
+	int n = 4;
+	cout <<"Total set bit count is " <<countSetBits(n);
+	return 0;
+}
+
+// This code is contributed by shivanisinghss2110.
+-many more to be added like
+1.subsets
+2.finding the missing and duplicate number in an array
+
+
+
+
+
