@@ -1,2 +1,3 @@
 # all-theory-regarding-pp
-all algo,bit manipulation and etc
+all algo,and methods
+and pattern wise problems set
