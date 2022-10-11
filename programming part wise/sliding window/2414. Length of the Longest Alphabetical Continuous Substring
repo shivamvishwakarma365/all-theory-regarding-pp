@@ -1,0 +1,16 @@
+    int i=0,j=1,n=s.length(),maxi=1;     
+        while(j<n)
+        {
+            if(s[j]-s[j-1] == 1)//like b-a is 1 (98-97);
+            {
+                j++;
+            }
+            else
+            {
+                maxi=max(maxi,j-i);
+                i=j;
+                j++;
+            }
+        }
+        return max(maxi,j-i);
+    }
