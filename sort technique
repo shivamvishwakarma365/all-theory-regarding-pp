@@ -1,0 +1,28 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+    vector<vector<int>>arr;
+    arr={{1, 4}, {2, 3}, {4, 6}, {8, 9}} ;
+    for(int i=0;i<arr.size();i++){
+        for(int j=0;j<arr[0].size();j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+	//function to sort according to the second index of the 2d array which consists of pairs
+	
+    sort(arr.begin(),arr.end(),[&](vector<int>&a,vector<int>&b){
+		return a[1]<b[1]?true:false;
+	});
+    cout<<"after sorting"<<endl;
+     for(int i=0;i<arr.size();i++){
+        for(int j=0;j<arr[0].size();j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    
+}
